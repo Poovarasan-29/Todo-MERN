@@ -22,7 +22,7 @@ export default function ToDos({
   async function deleteHandle(e) {
     const todoid = e.target.getAttribute("todoid");
 
-    const res = await axios.delete("http://localhost:3000/delete/" + todoid);
+    const res = await axios.delete("https://todo-knf0.onrender.com/delete/" + todoid);
     setTodos(res.data);
   }
 

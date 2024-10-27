@@ -12,7 +12,7 @@ export default function App() {
   useEffect(() => {
     fetchData();
     async function fetchData() {
-      const res = await axios.get("http://localhost:3000/");
+      const res = await axios.get("https://todo-knf0.onrender.com/");
       setTodos(res.data);
     }
   }, []);
@@ -22,7 +22,7 @@ export default function App() {
     const descriptionTrim = description.trim();
     if (titleTrim.length !== 0) {
       if (checkEditClicked === false) {
-        const res = await axios.post("http://localhost:3000/add", {
+        const res = await axios.post("https://todo-knf0.onrender.com/add", {
           title: titleTrim,
           description: descriptionTrim,
         });
@@ -30,7 +30,7 @@ export default function App() {
           setTodos(res.data.todos);
         }
       } else {
-        const res = await axios.put("http://localhost:3000/edit/" + todoId, {
+        const res = await axios.put("https://todo-knf0.onrender.com/edit/" + todoId, {
           title: titleTrim,
           description: descriptionTrim,
         });
