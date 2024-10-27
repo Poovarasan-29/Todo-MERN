@@ -45,7 +45,6 @@ exports.editTodoController = async (req, res) => {
 
 exports.deleteTodoController = async (req, res) => {
   const deletedTodo = await createModel.findByIdAndDelete(req.params.id);
-  console.log(deletedTodo);
 
   const todos = await createModel.find({});
   res.json(todos);
