@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ToDos from "./ToDos";
 import axios from "axios";
+import "./App.css";
 
 export default function App() {
   const [title, setTitle] = useState("");
@@ -8,12 +9,14 @@ export default function App() {
   const [checkEditClicked, setCheckEditClicked] = useState(false);
   const [todos, setTodos] = useState([]);
   const [todoId, setTodoID] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchData();
     async function fetchData() {
       const res = await axios.get("https://todo-knf0.onrender.com/");
       setTodos(res.data);
+      setLoading(false)
     }
   }, []);
 
@@ -21,6 +24,7 @@ export default function App() {
     const titleTrim = title.trim();
     const descriptionTrim = description.trim();
     if (titleTrim.length !== 0) {
+      setLoading(true);
       if (checkEditClicked === false) {
         const res = await axios.post("https://todo-knf0.onrender.com/add", {
           title: titleTrim,
@@ -30,10 +34,13 @@ export default function App() {
           setTodos(res.data.todos);
         }
       } else {
-        const res = await axios.put("https://todo-knf0.onrender.com/edit/" + todoId, {
-          title: titleTrim,
-          description: descriptionTrim,
-        });
+        const res = await axios.put(
+          "https://todo-knf0.onrender.com/edit/" + todoId,
+          {
+            title: titleTrim,
+            description: descriptionTrim,
+          }
+        );
         if (res.data.updatedData == false)
           confirm("The Updated todo already deleted");
 
@@ -43,6 +50,7 @@ export default function App() {
       }
       setTitle("");
       setDescription("");
+      setLoading(false);
     } else {
       alert("Todo can't be Empty");
     }
@@ -51,6 +59,11 @@ export default function App() {
   return (
     todos && (
       <div>
+        {loading && (
+          <div className="loading">
+            <div></div>
+          </div>
+        )}
         <div className="d-flex p-3 gap-2 pb-4 justify-content-center">
           <input
             type="text"
@@ -70,6 +83,7 @@ export default function App() {
           <button
             className="btn btn-primary d-flex justify-content-center align-items-center ms-4"
             onClick={handleSubmit}
+            disabled={loading}
           >
             {checkEditClicked ? "UPDATE" : "ADD"}
           </button>
@@ -81,6 +95,7 @@ export default function App() {
           setCheckEditClicked={setCheckEditClicked}
           setTodoID={setTodoID}
           setTodos={setTodos}
+          setLoading={setLoading}
         />
       </div>
     )

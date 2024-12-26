@@ -8,6 +8,7 @@ export default function ToDos({
   setCheckEditClicked,
   setTodoID,
   setTodos,
+  setLoading,
 }) {
   function editHandle(e) {
     const todoid = e.target.getAttribute("todoid");
@@ -20,10 +21,14 @@ export default function ToDos({
   }
 
   async function deleteHandle(e) {
+    setLoading(true)
     const todoid = e.target.getAttribute("todoid");
 
-    const res = await axios.delete("https://todo-knf0.onrender.com/delete/" + todoid);
+    const res = await axios.delete(
+      "https://todo-knf0.onrender.com/delete/" + todoid
+    );
     setTodos(res.data);
+    setLoading(false)
   }
 
   return (
