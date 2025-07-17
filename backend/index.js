@@ -15,8 +15,8 @@ app.use(cors());
 
 app.use(todoRouter);
 app.use(userRouter);
-app.get("/", () => {
-  console.log("server running...");
+app.get("/", (req, res) => {
+  res.send("Server running...");
 });
 
 app.listen(PORT, () => {
