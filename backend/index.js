@@ -1,16 +1,23 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 const connectDB = require("./connectDatabase");
-const createRouter = require("./routes/createRoute");
+const todoRouter = require("./routes/todoRouter");
+const userRouter = require("./routes/userRouter");
 
 connectDB();
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use(createRouter);
+app.use(todoRouter);
+app.use(userRouter);
+app.get("/", () => {
+  console.log("server running...");
+});
 
 app.listen(PORT, () => {
   console.log("Server is running at PORT : ", PORT);

@@ -1,0 +1,10 @@
+.todo-container {
+  background-color: white;
+  width: 60%;
+  margin: 20px auto;
+  height: 65vh;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}

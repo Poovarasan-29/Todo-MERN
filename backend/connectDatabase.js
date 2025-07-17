@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
-const uri =
-  "mongodb+srv://spking222005:SayHi_29@todoapp.r2s7x.mongodb.net/todo";
+const uri = process.env.MONGODB_URL;
 
 const connectDB = async () => {
   try {
     await mongoose.connect(uri);
+    console.log("DB connected");
   } catch (error) {
     console.error(error);
   }

@@ -1,0 +1,18 @@
+.todo-text h1 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 60px;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.user-name {
+  width: fit-content;
+  margin: 0px;
+  position: relative;
+  left: 50%;
+  font-size: 20px;
+  top: -10px;
+  color: rgb(220, 220, 220);
+  font-style: italic;
+}

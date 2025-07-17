@@ -1,0 +1,44 @@
+:root {
+  --size: 18px;
+  --vh: 48vh;
+}
+
+.list-todos-container ul li {
+  list-style-type: none;
+  width: 80%;
+  margin: 0 auto;
+  border-bottom: 2px solid rgba(37, 100, 207, 1);
+  padding: 10px 5px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-align: justify;
+  font-size: var(--size);
+  justify-content: space-between;
+}
+.list-todos-container ul li:last-child {
+  border: none;
+}
+
+.list-todos-container ul {
+  height: var(--vh);
+  overflow-y: auto;
+}
+
+input[type="checkbox"] {
+  width: var(--size);
+  height: var(--size);
+}
+
+.edit--delete-btns {
+  display: flex;
+  gap: 5px;
+}
+
+.loading {
+  width: 100%;
+  height: var(--vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

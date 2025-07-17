@@ -1,0 +1,75 @@
+form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input--cancel-container {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+.cancel-btn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 26px;
+  width: 30px;
+  height: 30px;
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.cancel-btn:hover {
+  background-color: red;
+  color: whitesmoke;
+  /* box-shadow: 0px 0px 10px gray, 0px 0px 10px gray; */
+  transform: rotate(180deg);
+  transition: 0.5s;
+}
+
+.enter-item-input {
+  height: 40px;
+  flex-grow: 1;
+  padding: 0 38px 0 10px;
+  border: 2px solid rgba(37, 100, 207, 255);
+  border-radius: 1px;
+  outline: none;
+}
+
+.enter-item-input:focus {
+  border-radius: 4px;
+}
+
+.input--addbtn {
+  width: 100%;
+  display: flex;
+}
+.select {
+  height: 40px;
+  flex-grow: 1;
+  margin-left: 50px;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  background-color: rgba(37, 100, 207, 255);
+  color: white;
+}
+.select option {
+  background-color: white;
+  color: black;
+}
+
+.add-btn {
+  border-radius: 2px;
+  margin-left: 5px;
+}
+
+.item-add-msg {
+  position: absolute;
+  top: -25px;
+  right: 50%;
+}
